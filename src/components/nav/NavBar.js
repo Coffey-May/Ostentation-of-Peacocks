@@ -20,6 +20,9 @@ export default (props) => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/friends">Friends</Link>
             </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/tasks">Tasks</Link>
+            </li>
 
                 {
             localStorage.getItem("active_user")
