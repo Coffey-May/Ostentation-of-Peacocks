@@ -15,10 +15,10 @@ export default ({ friend }) => (
     
         <button onClick={
                 () => {
-                    deleteFriend(friend)
-                        .then(() => {
-                            props.history.push("/friends")
-                        })
+                    // deleteFriend(friend)
+                    //     .then(() => {
+                    //         props.history.push("/friends")
+                    //     })
                 }
             }>
                 Delete Friend

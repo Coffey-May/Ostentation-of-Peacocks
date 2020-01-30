@@ -29,13 +29,13 @@ export default (props) => {
                         const foundedFriend = users.find(
                             (user) => {
 
-                                "nutshell_user"
-                                return user.userid === activeUser.Id
+                                // "nutshell_user"
+                                // return user.userid === activeUser.Id
                             }
                         )
 
                         // Pass the matching location to Employee component
-                        return <Friend key={user.userid}
+                        return <Friend key={friend.userid}
                                          friendFound={foundedFriend}
                                          friend={friend} 
                                          
