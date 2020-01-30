@@ -1,0 +1,62 @@
+// Added by Adi
+import React, { useState, useEffect } from "react"
+
+/*
+    The context is imported and used by individual components
+    that need data
+*/
+export const ArticleContext = React.createContext()
+
+/*
+ This component establishes what data can be used.
+ */
+export const ArticleProvider = (props) => {
+    const [articles, setArticles] = useState([])
+
+    const getArticles = () => {
+        return fetch("http://localhost:8088/articles")
+            .then(res => res.json())
+            .then(setArticles)
+    }
+
+    const addArticle = article => {
+        return fetch("http://localhost:8088/articles", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(article)
+        })
+            .then(getArticles)
+    }
+
+    const releaseArticle = articleId => {
+        return fetch(`http://localhost:8088/Articles/${articleId}`, {
+            method: "DELETE"
+        })
+            .then(getArticles)
+    }
+
+    /*
+        Load all Articles when the component is mounted. Ensure that
+        an empty array is the second argument to avoid infinite loop.
+    */
+    useEffect(() => {
+        getArticles()
+    }, [])
+
+    useEffect(
+    () => {
+        console.log("****  Article APPLICATION STATE CHANGED  ****")
+        console.log(articles)
+    },
+    [articles])
+
+    return (
+        <ArticleContext.Provider value={{
+            articles, addArticle, releaseArticle
+        }}>
+            {props.children}
+        </ArticleContext.Provider>
+    )
+}
