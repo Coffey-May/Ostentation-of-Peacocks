@@ -50,7 +50,7 @@ export const ArticleProvider = (props) => {
         console.log("****  Article APPLICATION STATE CHANGED  ****")
         console.log(articles)
     },
-    [articles])
+    [])
 
     return (
         <ArticleContext.Provider value={{

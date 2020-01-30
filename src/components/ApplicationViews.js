@@ -3,7 +3,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 // import { UserProvider } from "./auth/UserProvider"
-// import { ArticleProvider } from "./articles/ArticleProvider"
+import { ArticleProvider } from "./articles/ArticleProvider"
 // import { ChatProvider } from "./chat/ChatProvider"
 // import { EventProvider } from "./event/EventProvider"
 // import { FriendProvider } from "./friend/FriendProvider"
@@ -32,8 +32,8 @@ export default (props) => {
 
         
             
-    {/* <ArticleProvider>
-                <Route exact path="/articles" render={
+    <ArticleProvider>
+                {/* <Route exact path="/articles" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
                             return <ArticleList {...props} />
@@ -47,9 +47,9 @@ export default (props) => {
                             return <ArticleList {...props} />
                         }
                         return <Login {...props} />
-                    }
+                    } */}
                 } />
-            </ArticleProvider> */}
+            </ArticleProvider>
 
 
 
