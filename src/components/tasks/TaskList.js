@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react';
 import { FriendContext } from './FriendProvider';
-// import { LocationContext } from '../Location/LocationProvider';
+import { LocationContext } from '../Location/LocationProvider';
 import { UserContext } from '../auth/UserProvider';
 import Animal from './Animal';
 import './Animals.css';
