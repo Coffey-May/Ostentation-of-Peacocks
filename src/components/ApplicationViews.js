@@ -2,24 +2,23 @@
 
 import React from "react"
 import { Route } from "react-router-dom"
-import Login from "./auth/Login"
-import { UserProvider } from "./auth/UserProvider"
-import { ArticleProvider } from "./articles/ArticleProvider"
-import { ChatProvider } from "./chat/ChatProvider"
-import { EventProvider } from "./event/EventProvider"
-import { FriendProvider } from "./friend/FriendProvider"
-import { TaskProvider } from "./task/TaskProvider"
-import ArticleList from "./articles/ArticleList"
-import ChatList from "./chats/ChatList"
-import EventList from "./events/EventList"
-import FriendList from "./friends/FriendList"
-import TaskList from "./tasks/TaskList"
-import ArticleForm from "./articles/ArticleForm"
-import ChatForm from './chats/ChatForm'
-import EventForm from "./events/EventForm"
-import FriendForm from './friends/FriendForm'
-import TaskForm from './tasks/TaskForm'
-import AnimalDetail from "./animal/AnimalDetail"
+// import { UserProvider } from "./auth/UserProvider"
+// import { ArticleProvider } from "./articles/ArticleProvider"
+// import { ChatProvider } from "./chat/ChatProvider"
+// import { EventProvider } from "./event/EventProvider"
+// import { FriendProvider } from "./friend/FriendProvider"
+// import { TaskProvider } from "./task/TaskProvider"
+// import ArticleList from "./articles/ArticleList"
+// import ChatList from "./chats/ChatList"
+// import EventList from "./events/EventList"
+// import FriendList from "./friends/FriendList"
+// import TaskList from "./tasks/TaskList"
+// import ArticleForm from "./articles/ArticleForm"
+// import ChatForm from './chats/ChatForm'
+// import EventForm from "./events/EventForm"
+// import FriendForm from './friends/FriendForm'
+// import TaskForm from './tasks/TaskForm'
+// import AnimalDetail from "./animal/AnimalDetail"
 
 
 
@@ -33,7 +32,7 @@ export default (props) => {
 
         
             
-    <ArticleProvider>
+    {/* <ArticleProvider>
                 <Route exact path="/articles" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
@@ -50,12 +49,12 @@ export default (props) => {
                         return <Login {...props} />
                     }
                 } />
-            </ArticleProvider>
+            </ArticleProvider> */}
 
 
 
 
-            <EventProvider>
+            {/* <EventProvider>
                 <ArticleProvider>
                     <UserProvider>
                         <Route exact path="/events" render={
@@ -79,7 +78,7 @@ export default (props) => {
 
                     </UserProvider>
                 </ArticleProvider>
-            </EventProvider>
+            </EventProvider> */}
 
 
 
@@ -89,7 +88,7 @@ export default (props) => {
             
 
 
-
+{/* 
             <FriendProvider>
                 <ArticleProvider>
                     <Route exact path="/friends" render={
@@ -104,7 +103,7 @@ export default (props) => {
                         render={props => < FriendForm {...props} />}
                     />
                 </ArticleProvider>
-            </FriendProvider>
+            </FriendProvider> */}
 
 
         </>
