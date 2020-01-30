@@ -34,7 +34,6 @@ export default (props) => {
         
             
     <ArticleProvider>
-                {/* Render the location list when http://localhost:3000/ */}
                 <Route exact path="/articles" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
@@ -87,17 +86,7 @@ export default (props) => {
 
 
 
-            <UserProvider>
-                {/* Render the animal list when http://localhost:3000/animals */}
-                <Route exact path="/users" render={
-                    props => {
-                        if (localStorage.getItem("nutshell_user") !== null) {
-                            return <CustomerList {...props} />
-                        }
-                        return <Login {...props} />
-                    }
-                } />
-            </UserProvider>
+            
 
 
 
