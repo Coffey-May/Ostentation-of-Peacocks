@@ -1,125 +1,82 @@
 import React, { useContext, useState, useEffect } from "react"
-import { AnimalContext } from "./AnimalProvider"
-import { LocationContext } from "../location/LocationProvider"
+import { FriendContext } from "./FriendProvider"
 
 
 export default props => {
-    const { locations } = useContext(LocationContext)
-    const { addAnimal, animals, updateAnimal } = useContext(AnimalContext)
-    const [animal, setAnimal] = useState({})
+    const { friends } = useContext(FriendContext)
+    const { addFriend, friends, updateFriend } = useContext(FriendContext)
+    const [friend, setFriend] = useState({})
 
-    const editMode = props.match.params.hasOwnProperty("animalId")
+    const editMode = props.match.params.hasOwnProperty("friendId")
 
     const handleControlledInputChange = (event) => {
         /*
             When changing a state object or array, always create a new one
             and change state instead of modifying current one
         */
-        const newAnimal = Object.assign({}, animal)
-        newAnimal[event.target.name] = event.target.value
-        setAnimal(newAnimal)
+        const newFriend = Object.assign({}, friend)
+        newFriend[event.target.name] = event.target.value
+        setFriend(newFriend)
     }
 
     const setDefaults = () => {
         if (editMode) {
-            const animalId = parseInt(props.match.params.animalId)
-            const selectedAnimal = animals.find(a => a.id === animalId) || {}
-            setAnimal(selectedAnimal)
+            const friendId = parseInt(props.match.params.FriendId)
+            const selectedFriend = friends.find(a => a.id === friendId) || {}
+            setFriend(selectedFriend)
         }
     }
 
     useEffect(() => {
         setDefaults()
-    }, [animals])
+    }, [friends])
 
-    const constructNewAnimal = () => {
-        const locationId = parseInt(animal.locationId)
+    const constructNewFriend = () => {
+        const locationId = parseInt(friend.locationId)
 
         if (locationId === 0) {
             window.alert("Please select a location")
         } else {
             if (editMode) {
-                updateAnimal({
-                    id: animal.id,
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: locationId,
-                    treatment: animal.treatment,
-                    customerId: parseInt(localStorage.getItem("kennel_customer"))
+                updateFriend({
+                    id: friend.id,
+                    name: friend.name,
+                    userId: parseInt(localStorage.getItem("nutshell_user"))
                 })
-                    .then(() => props.history.push("/animals"))
+                    .then(() => props.history.push("/Friends"))
             } else {
-                addAnimal({
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: locationId,
-                    treatment: animal.treatment,
-                    customerId: parseInt(localStorage.getItem("kennel_customer"))
+                addFriend({
+                    name: Friend.name,
+                    userId: parseInt(localStorage.getItem("nutshell_user"))
                 })
-                    .then(() => props.history.push("/animals"))
+                    .then(() => props.history.push("/friends"))
             }
         }
     }
 
     return (
-        <form className="animalForm">
-            <h2 className="animalForm__title">{editMode ? "Update Animal" : "Admit Animal"}</h2>
+        <form className="FriendForm">
+            <h2 className="FriendForm__title">{editMode ? "Update Friend" : "Admit Friend"}</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Animal name: </label>
+                    <label htmlFor="name">Future BFF: </label>
                     <input type="text" name="name" required autoFocus className="form-control"
                         proptype="varchar"
-                        placeholder="Animal name"
-                        defaultValue={animal.name}
+                        placeholder="Future BFF"
+                        defaultValue={Friend.name}
                         onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="breed">Animal breed: </label>
-                    <input type="text" name="breed" required className="form-control"
-                        proptype="varchar"
-                        placeholder="Animal breed"
-                        defaultValue={animal.breed}
-                        onChange={handleControlledInputChange}
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="locationId">Location: </label>
-                    <select name="locationId" className="form-control"
-                        proptype="int"
-                        value={animal.locationId}
-                        onChange={handleControlledInputChange}>
-
-                        <option value="0">Select a location</option>
-                        {locations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="treatment">Treatments: </label>
-                    <textarea type="text" name="treatment" className="form-control"
-                        proptype="varchar"
-                        value={animal.treatment}
-                        onChange={handleControlledInputChange}>
-                    </textarea>
-                </div>
-            </fieldset>
+            
+            
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-                    constructNewAnimal()
+                    constructNewFriend()
                 }}
                 className="btn btn-primary">
-                {editMode ? "Save Updates" : "Make Reservation"}
+                {editMode ? "Save Friend" : "I Can Has BFF"}
             </button>
         </form>
     )
