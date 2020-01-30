@@ -9,7 +9,7 @@ const Login = props => {
     const password = useRef()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?userEmail=${email.current.value}`)
             .then(_ => _.json())
             .then(user => {
                 if (user.length) {
@@ -24,12 +24,15 @@ const Login = props => {
 
         existingUserCheck()
             .then(exists => {
-                if (exists && exists.password === password.current.value) {
+                if (exists && exists.userPassword === password.current.value) {
                     localStorage.setItem("nutshell_user", exists.id)
                     props.history.push("/")
-                } else if (exists && exists.password !== password.current.value) {
+                } else if (exists && exists.userPassword !== password.current.value) {
                     window.alert("Password does not match")
-                } 
+                  } else if (!exists) {
+                    window.alert("user does not exist")
+
+                }
             })
     }
 
