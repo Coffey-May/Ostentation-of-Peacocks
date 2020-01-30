@@ -2,12 +2,10 @@
 
 
 import React, { useContext } from "react"
-// import { EmployeeContext } from "./EmployeeProvider"
-// import { LocationContext } from "../locations/LocationProvider"
-
 
 import { FriendContext } from "./FriendProvider"
 import { UserContext } from "./UserProvider"
+
 import Friend from "./Friend"
 import Employee from "./Employee"
 // import "./Employees.css"
@@ -30,14 +28,16 @@ export default (props) => {
                         // Find the USER aka the FRIEND beibg added with the  matching activeUserId in the Users object
                         const foundedFriend = users.find(
                             (user) => {
+
+                                "nutshell_user"
                                 return user.userid === activeUser.Id
                             }
                         )
 
                         // Pass the matching location to Employee component
                         return <Friend key={user.userid}
-                                         friend={foundedFriend}
-                                         employee={employee} 
+                                         friendFound={foundedFriend}
+                                         friend={friend} 
                                          
                                          />
                     })
@@ -81,40 +81,6 @@ export default (props) => {
 
 
 
-
-import React, { useContext } from "react"
-import { FriendContext } from "./FriendProvider"
-// import { LocationContext } from "../locations/LocationProvider"
-// import { CustomerContext } from "../customers/CustomerProvider"
-import Friend from "./Friend"
-// import "./Friend.css"
-
-
-
-
-
-
-export default (props) => {
-    const { friends } = useContext(FriendContext)
-
-    return (
-        <>
-            <h1>Friends</h1>
-
-            <button onClick={() => props.history.push("/friends/create")}>
-                Add Friend
-            </button>
-            <div className="friends">
-
-                {
-                    friends.map(friend => {
-                        return <Friend key={friend.id} friend={friend} />
-                    })
-                }
-            </div>
-        </>
-    )
-}
 
 
 
