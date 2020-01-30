@@ -54,33 +54,6 @@ export default (props) => {
 
 
 
-<<<<<<< HEAD
-//             <EventProvider>
-//                 <ArticleProvider>
-//                     <UserProvider>
-//                         <Route exact path="/events" render={
-//                             props => {
-//                                 if (localStorage.getItem("nutshell_user") !== null) {
-//                                     return <EventList {...props} />
-//                                 }
-//                                 return <Login {...props} />
-//                             }
-//                         } />
-//                         <Route path="/events/create"
-//                             render={props => < EventForm {...props} />}
-//                         />
-//                         <Route path="/evenets/:eventId(\d+)" render={
-//                             props => <EventDetail {...props} />
-//                         } />
-//                         <Route path="/events/edit/:eventId(\d+)" render={
-//                             props => <EventForm {...props} />
-//                         } />
-
-
-//                     </UserProvider>
-//                 </ArticleProvider>
-//             </EventProvider>
-=======
             {/* <EventProvider>
                 <ArticleProvider>
                     <UserProvider>
@@ -106,7 +79,6 @@ export default (props) => {
                     </UserProvider>
                 </ArticleProvider>
             </EventProvider> */}
->>>>>>> master
 
 
 
@@ -116,24 +88,6 @@ export default (props) => {
             
 
 
-<<<<<<< HEAD
-
-//             <FriendProvider>
-//                 <ArticleProvider>
-//                     <Route exact path="/friends" render={
-//                         props => {
-//                             if (localStorage.getItem("kennel_customer") !== null) {
-//                                 return <FriendList {...props} />
-//                             }
-//                             return <Login {...props} />
-//                         }
-//                     } />
-//                     <Route path="/friends/create"
-//                         render={props => < FriendForm {...props} />}
-//                     />
-//                 </ArticleProvider>
-//             </FriendProvider>
-=======
 {/* 
             <FriendProvider>
                 <ArticleProvider>
@@ -150,7 +104,6 @@ export default (props) => {
                     />
                 </ArticleProvider>
             </FriendProvider> */}
->>>>>>> master
 
 
 //         </>
