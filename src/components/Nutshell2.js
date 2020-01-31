@@ -1,7 +1,7 @@
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
 import NavBar from "./nav/NavBar"
-import ApplicationViews from "./ApplicationViews3"
+import ApplicationViews from "./ApplicationViews"
 import "./Nutshell2.css"
 import Login from "./auth/Login"
 import Register from "./auth/Register"

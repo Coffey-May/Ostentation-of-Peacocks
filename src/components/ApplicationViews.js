@@ -9,7 +9,7 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 import { FriendProvider } from "./friends/FriendProvider"
 // import { TaskProvider } from "./task/TaskProvider"
 import { ChatProvider } from "./chats/ChatProvider"
-import { UserProvider } from "./auth/UserProvider"
+
 
 // import { ArticleProvider } from "./articles/ArticleProvider"
 // import { ChatProvider } from "./chats/ChatProvider"
@@ -40,7 +40,7 @@ import TaskList from "./tasks/TaskList"
 import ArticleForm from "./articles/ArticleForm"
 // import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
-// import FriendForm from './friends/FriendForm'
+import FriendForm from './friends/FriendForm'
 import TaskForm from './tasks/TaskForm'
 
 
