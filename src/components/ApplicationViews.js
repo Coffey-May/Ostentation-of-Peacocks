@@ -8,18 +8,41 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 // import { EventProvider } from "./event/EventProvider"
 import { FriendProvider } from "./friends/FriendProvider"
 // import { TaskProvider } from "./task/TaskProvider"
+import { ChatProvider } from "./chats/ChatProvider"
+import { UserProvider } from "./auth/UserProvider"
+
+// import { ArticleProvider } from "./articles/ArticleProvider"
+// import { ChatProvider } from "./chats/ChatProvider"
+// import { EventProvider } from "./events/EventProvider"
+// import { FriendProvider } from "./friends/FriendProvider"
+// import { TaskProvider } from "./tasks/TaskProvider"
+// import ArticleList from "./articles/ArticleList"
+import ChatList from "./chats/ChatList"
+// import EventList from "./events/EventList"
+// import FriendList from "./friends/FriendList"
+// import TaskList from "./tasks/TaskList"
+// import ArticleForm from "./articles/ArticleForm"
+import ChatForm from './chats/ChatForm'
+// import { UserProvider } from "./auth/UserProvider"
+
+// import { ChatProvider } from "./chat/ChatProvider"
+// import { EventProvider } from "./event/EventProvider"
+// import { FriendProvider } from "./friend/FriendProvider"
+import { TaskProvider } from "./tasks/TaskProvider"
 import ArticleList from "./articles/ArticleList"
 import Login from "./auth/Login"
 // import ChatList from "./chats/ChatList"
 // import EventList from "./events/EventList"
 import FriendList from "./friends/FriendList"
 // import TaskList from "./tasks/TaskList"
+// import FriendList from "./friends/FriendList"
+import TaskList from "./tasks/TaskList"
 import ArticleForm from "./articles/ArticleForm"
 // import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
 // import FriendForm from './friends/FriendForm'
 import TaskForm from './tasks/TaskForm'
-import { UserProvider } from "./auth/UserProvider"
+
 
 
 
@@ -48,7 +71,7 @@ export default (props) => {
         
             
     <ArticleProvider>
-                <Route exact path="/articles" render={
+            <Route exact path="/articles" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
                             return <ArticleList {...props} />
@@ -56,7 +79,7 @@ export default (props) => {
                         return <Login {...props} />
                     }
                 } />
-                <Route exact path="/" render={
+            <Route exact path="/" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
                             return <ArticleList {...props} />
@@ -64,17 +87,28 @@ export default (props) => {
                         return <Login {...props} />
                     }
                 } />
-                <Route
-              exact
-              path="/articles/create"
+            <Route exact path="/articles/create"
               render={props => <ArticleForm {...props} />}
             />
             <Route
               path="/articles/editArticle/:articleId(\d+)"
               render={props => <ArticleForm {...props} />}
             />
-            </ArticleProvider>
-
+            </ArticleProvider> 
+        <ChatProvider>
+            <UserProvider>
+            <Route exact path="/chats" render={
+                            props => <ChatList {...props} />
+                        } />
+            <Route exact path="/chats/create" render={
+                        props => <ChatForm {...props} />
+                        } />
+            <Route path="/chats/edit/:chatId(\d+)" render={
+                            props => <ChatForm {...props} />
+                        } />
+            </UserProvider>
+            
+        </ChatProvider>
 
 
 {/* 

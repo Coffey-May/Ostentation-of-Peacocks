@@ -5,7 +5,7 @@ export const ChatContext = React.createContext()
 /*
  This component establishes what data can be used.
  */
-export const chatProvider = (props) => {
+export const ChatProvider = (props) => {
     const [chats, setChats] = useState([])
 
     const getChats = () => {
