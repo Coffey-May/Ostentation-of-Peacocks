@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-export const UserContext = React.createContext()
+export const userContext = React.createContext()
 
 /*
  This component establishes what data can be used.

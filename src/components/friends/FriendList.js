@@ -7,7 +7,7 @@ import React, { useContext } from "react"
 
 
 import { FriendContext } from "./FriendProvider"
-import { UserContext } from "./UserProvider"
+import { userContext } from "./UserProvider"
 import Friend from "./Friend"
 import Employee from "./Employee"
 // import "./Employees.css"
@@ -16,7 +16,7 @@ export default (props) => {
     // const locations = useLocations()
     const { friends } = useContext(FriendContext)
 
-    const { users } = useContext(UserContext)
+    const { users } = useContext(userContext)
 
     return (
         <div className="friends">
@@ -82,39 +82,39 @@ export default (props) => {
 
 
 
-import React, { useContext } from "react"
-import { FriendContext } from "./FriendProvider"
-// import { LocationContext } from "../locations/LocationProvider"
-// import { CustomerContext } from "../customers/CustomerProvider"
-import Friend from "./Friend"
-// import "./Friend.css"
+// import React, { useContext } from "react"
+// import { FriendContext } from "./FriendProvider"
+// // import { LocationContext } from "../locations/LocationProvider"
+// // import { CustomerContext } from "../customers/CustomerProvider"
+// import Friend from "./Friend"
+// // import "./Friend.css"
 
 
 
 
 
 
-export default (props) => {
-    const { friends } = useContext(FriendContext)
+// export default (props) => {
+//     const { friends } = useContext(FriendContext)
 
-    return (
-        <>
-            <h1>Friends</h1>
+//     return (
+//         <>
+//             <h1>Friends</h1>
 
-            <button onClick={() => props.history.push("/friends/create")}>
-                Add Friend
-            </button>
-            <div className="friends">
+//             <button onClick={() => props.history.push("/friends/create")}>
+//                 Add Friend
+//             </button>
+//             <div className="friends">
 
-                {
-                    friends.map(friend => {
-                        return <Friend key={friend.id} friend={friend} />
-                    })
-                }
-            </div>
-        </>
-    )
-}
+//                 {
+//                     friends.map(friend => {
+//                         return <Friend key={friend.id} friend={friend} />
+//                     })
+//                 }
+//             </div>
+//         </>
+//     )
+// }
 
 
 

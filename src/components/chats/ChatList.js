@@ -2,13 +2,13 @@ import React, { useContext } from "react"
 import { ChatContext } from "./ChatProvider"
 import Chat from "./Chat"
 import "./Chat.css"
-import { UserContext } from "../auth/UserProvider"
+import { userContext } from "../auth/UserProvider"
 
 
 
 export default props => {
     const { chats } = useContext(ChatContext)
-    const { users } = useContext(UserContext)
+    const { users } = useContext(userContext)
     const sortedChats = chats.sort( (a,b) => 
         b.date - a.date)
     
