@@ -9,7 +9,7 @@ import { UserProvider } from "./auth/UserProvider"
 // import { ChatProvider } from "./chats/ChatProvider"
 // import { EventProvider } from "./events/EventProvider"
 // import { FriendProvider } from "./friends/FriendProvider"
-// import { TaskProvider } from "./tasks/TaskProvider"
+import { TaskProvider } from "./tasks/TaskProvider"
 // import ArticleList from "./articles/ArticleList"
 import ChatList from "./chats/ChatList"
 // import EventList from "./events/EventList"
@@ -22,7 +22,7 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 // import { ChatProvider } from "./chat/ChatProvider"
 // import { EventProvider } from "./event/EventProvider"
 // import { FriendProvider } from "./friend/FriendProvider"
-import { TaskProvider } from "./tasks/TaskProvider"
+// import { TaskProvider } from "./tasks/TaskProvider"
 import ArticleList from "./articles/ArticleList"
 import Login from "./auth/Login"
 // import ChatList from "./chats/ChatList"
@@ -54,10 +54,11 @@ export default (props) => {
                          <Route path="/tasks/create" render={
                             props => <TaskForm {...props} />
                         } />
-                        {/* <Route path="/tasks/edit/:taskId(\d+)" render={
+                        
+                        <Route path="/tasks/editTasks/:taskId(\d+)" render={
                             props => <TaskForm {...props} />
                         } /> 
-         */}
+        
     </UserProvider>
 </TaskProvider>
         
@@ -87,6 +88,8 @@ export default (props) => {
               render={props => <ArticleForm {...props} />}
             />
             </ArticleProvider> 
+
+
         <ChatProvider>
             <UserProvider>
             <Route exact path="/chats" render={
