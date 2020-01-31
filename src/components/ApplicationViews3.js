@@ -30,65 +30,12 @@ export default (props) => {
         <>
     
 
-        
-{/*             
-// {/* //     {/* <ArticleProvider> */}
-{/* // //                 <Route exact path="/articles" render={ */} */}
-// //                     props => {
-// //                         if (localStorage.getItem("nutshell_user") !== null) {
-// //                             return <ArticleList {...props} />
-// //                         }
-// //                         return <Login {...props} />
-// //                     }
-// //                 } />
-// //                 <Route exact path="/" render={
-// //                     props => {
-// //                         if (localStorage.getItem("nutshell_user") !== null) {
-// //                             return <ArticleList {...props} />
-// //                         }
-// //                         return <Login {...props} />
-// //                     }
-// //                 } />
-// //             </ArticleProvider> */}
+ 
+
+             {/* TEST APPLICATIONSVIEW RENDER!!! */}
 
 
-
-{/* 
-//             {/* <EventProvider>
-//                 <ArticleProvider>
-//                     <UserProvider>
-//                         <Route exact path="/events" render={
-//                             props => {
-//                                 if (localStorage.getItem("nutshell_user") !== null) {
-//                                     return <EventList {...props} />
-//                                 }
-//                                 return <Login {...props} />
-//                             }
-//                         } />
-//                         <Route path="/events/create"
-//                             render={props => < EventForm {...props} />}
-//                         />
-//                         <Route path="/evenets/:eventId(\d+)" render={
-//                             props => <EventDetail {...props} />
-//                         } />
-//                         <Route path="/events/edit/:eventId(\d+)" render={
-//                             props => <EventForm {...props} />
-//                         } /> */}
-
-{/* 
-{/* //                     </UserProvider> */}
-{/* //                 </ArticleProvider> */}
-{/* //             </EventProvider> */} */} */}
-
-
-
-
-
-
-            
-
-
-
+ {/* This is Adrians code to render the FriendsForm */}
             {/* <FriendProvider>
                 <ArticleProvider>
                     <Route exact path="/friends" render={
@@ -106,10 +53,12 @@ export default (props) => {
                         render={props => < FriendForm {...props} />}
                     />
                 </ArticleProvider>
-            </FriendProvider> */} */}
+            </FriendProvider>  */}
+
+
 
 {/* This is Elis code to render the FriendList */}
-<FriendProvider>
+            <FriendProvider>
                 <ArticleProvider>
                     <Route exact path="/friends" render={
                         props => {

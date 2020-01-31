@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
-export const userContext = React.createContext()
+export const UserContext = React.createContext()
+
 
 /*
  This component establishes what data can be used.
@@ -9,7 +10,8 @@ export const UserProvider = (props) => {
     const [users, setUsers] = useState([])
 
     const getUsers = () => {
-        return fetch("http://localhost:8088/users?_expand=Id")
+        // return fetch("http://localhost:8088/users?_expand=initiatorId",
+        return fetch("http://localhost:8088/users")
             .then(res => res.json())
             .then(setUsers)
     }
@@ -40,17 +42,21 @@ export const UserProvider = (props) => {
         getUsers()
     }, [])
 
-    useEffect(() => {
-        console.log("****  USER APPLICATION STATE CHANGED  ****")
-    }, [users])
+    useEffect(
+        () => {
+            console.log("****  User APPLICATION STATE CHANGED  ****")
+            console.log(users)
+        },
+        [users])
 
+   
     return (
-        <userContext.Provider value={{
+        <UserContext.Provider value={{
             // rememeber to send the deleteEvent for the DELETE
             // need to send the editEvent for the EDIT
             users, addUser, 
         }}>
             {props.children}
-        </userContext.Provider>
+        </UserContext.Provider>
     )
 }
