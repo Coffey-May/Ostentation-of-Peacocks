@@ -1,10 +1,10 @@
-.animals {
+.chatss {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   
-  .animal {
+  .chat {
       flex-basis: 28%;
       margin: 1em;
       padding: 1em;
