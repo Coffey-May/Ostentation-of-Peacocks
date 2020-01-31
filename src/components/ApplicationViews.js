@@ -2,19 +2,21 @@
 
 import React from "react"
 import { Route } from "react-router-dom"
-// import { UserProvider } from "./auth/UserProvider"
+import { ChatProvider } from "./chats/ChatProvider"
+import { UserProvider } from "./auth/UserProvider"
+
 // import { ArticleProvider } from "./articles/ArticleProvider"
-// import { ChatProvider } from "./chat/ChatProvider"
-// import { EventProvider } from "./event/EventProvider"
-// import { FriendProvider } from "./friend/FriendProvider"
-// import { TaskProvider } from "./task/TaskProvider"
+// import { ChatProvider } from "./chats/ChatProvider"
+// import { EventProvider } from "./events/EventProvider"
+// import { FriendProvider } from "./friends/FriendProvider"
+// import { TaskProvider } from "./tasks/TaskProvider"
 // import ArticleList from "./articles/ArticleList"
-// import ChatList from "./chats/ChatList"
+import ChatList from "./chats/ChatList"
 // import EventList from "./events/EventList"
 // import FriendList from "./friends/FriendList"
 // import TaskList from "./tasks/TaskList"
 // import ArticleForm from "./articles/ArticleForm"
-// import ChatForm from './chats/ChatForm'
+import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
 // import FriendForm from './friends/FriendForm'
 // import TaskForm from './tasks/TaskForm'
@@ -50,7 +52,20 @@ export default (props) => {
                     }
                 } />
             </ArticleProvider> */}
+        <ChatProvider>
+            <UserProvider>
+            <Route exact path="/chats" render={
+                            props => <ChatList {...props} />
+                        } />
+            <Route exact path="/chats/create" render={
+                        props => <ChatForm {...props} />
+                        } />
+            <Route path="/chats/edit/:chatId(\d+)" render={
+                            props => <ChatForm {...props} />
+                        } />
+            </UserProvider>
 
+        </ChatProvider>
 
 
 

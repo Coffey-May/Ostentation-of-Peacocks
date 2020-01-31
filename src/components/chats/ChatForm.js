@@ -34,50 +34,37 @@ export default props => {
 
     const constructNewChat = () => {
         
+        
             if (editMode) {
-                updateAnimal({
-                    id: animal.id,
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: locationId,
-                    treatment: animal.treatment,
-                    customerId: parseInt(localStorage.getItem("kennel_customer"))
+                updateChat({
+                    id: chat.id,
+                    userId: chat.userId,
+                    chatText: chat.chatText,
+                    date: Date.now(),
+
                 })
-                    .then(() => props.history.push("/animals"))
+                    .then(() => props.history.push("/chats"))
             } else {
-                addAnimal({
-                    name: animal.name,
-                    breed: animal.breed,
-                    locationId: locationId,
-                    treatment: animal.treatment,
-                    customerId: parseInt(localStorage.getItem("kennel_customer"))
+                addChat({
+                    chatText: chat.chatText,
+                    userId: parseInt(localStorage.getItem("nutshell_user")),
+                    date: Date.now()
                 })
-                    .then(() => props.history.push("/animals"))
+                    .then(() => props.history.push("/chats"))
             }
         }
-    }
+    
 
     return (
         <form className="chatForm">
             <h2 className="chatForm__title">{editMode ? "Update Chat" : "New Chat"}</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Animal name: </label>
-                    <input type="text" name="name" required autoFocus className="form-control"
+                    <label htmlFor="text">What would you like to say? </label>
+                    <input type="text" name="chatText" required autoFocus className="form-control"
                         proptype="varchar"
-                        placeholder="Animal name"
-                        defaultValue={animal.name}
-                        onChange={handleControlledInputChange}
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="breed">Animal breed: </label>
-                    <input type="text" name="breed" required className="form-control"
-                        proptype="varchar"
-                        placeholder="Animal breed"
-                        defaultValue={animal.breed}
+                        placeholder="Chat Away"
+                        defaultValue={chat.chatText}
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -87,10 +74,10 @@ export default props => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-                    constructNewAnimal()
+                    constructNewChat()
                 }}
                 className="btn btn-primary">
-                {editMode ? "Save Updates" : "Make Reservation"}
+                {editMode ? "Save Updates" : "Post Chat"}
             </button>
         </form>
     )

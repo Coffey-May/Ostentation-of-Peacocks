@@ -9,6 +9,9 @@ import { UserContext } from "../auth/UserProvider"
 export default props => {
     const { chats } = useContext(ChatContext)
     const { users } = useContext(UserContext)
+    const sortedChats = chats.sort( (a,b) => 
+        b.date - a.date)
+    
   
     return (
         <div className="chats">
@@ -17,12 +20,13 @@ export default props => {
                 Add Chat
             </button>
             <article className="chatList">
-                {chats.map(chat => {
-                    const user = users.find(u => u.id === chat.UserId)
-                    console.log(luser)
+                {sortedChats.map(chat => {
+                    const user = users.find(u => u.id === chat.userId) || {}
+
                     return <Chat key={chat.id} 
                     user={user}
-                    chat={chat} />})}
+                    chat={chat}
+                    {...props} />})}
             </article>
         </div>
     )

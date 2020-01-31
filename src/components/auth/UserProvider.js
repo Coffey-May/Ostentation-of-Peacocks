@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-export const userContext = React.createContext()
+export const UserContext = React.createContext()
 
 /*
  This component establishes what data can be used.
@@ -45,12 +45,12 @@ export const UserProvider = (props) => {
     }, [users])
 
     return (
-        <userContext.Provider value={{
+        <UserContext.Provider value={{
             // rememeber to send the deleteEvent for the DELETE
             // need to send the editEvent for the EDIT
             users, addUser, 
         }}>
             {props.children}
-        </userContext.Provider>
+        </UserContext.Provider>
     )
 }

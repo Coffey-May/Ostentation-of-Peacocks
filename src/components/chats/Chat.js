@@ -1,33 +1,33 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./Chat.css"
 import { Link } from "react-router-dom"
+import { ChatContext } from "./ChatProvider"
 
-const newFunction = (chat) => {
-    if(chat.userId === localStorage.getItem("nutshell_user")){
-        //return the button html string
-        return `<button onClick={() => {
-            props.history.push('/chats/edit/${chat.id}')
-        }}>Edit</button>`
-    }
-    else{
-        //return a blank string 
-        return ""
-    }
-}
+export default ({ chat, history, user }) => {
 
-export default ({ chat, users }) => (
     
+
+return (
+
     <section className="chat">
         <h3 className="chat__name">
-            <Link to = {`/friends/${users.id}`}>
-            {/* This above link needs to go to a new page with an add friend component    
+            <Link to={`/friends/${user.id}`}>
+                {/* This above link needs to go to a new page with an add friend component    
              */}
-            {users.userName}
+                {user.userEmail}
             </Link>
-            </h3>
+        </h3>
         <div className="chat__text"> {chat.chatText}</div>
-       {newFunction(chat)}
-        
+        <div className="chat__date"> {new Date(chat.date).toLocaleDateString('en-US')}</div>
+      
+        {chat.userId === parseInt(localStorage.getItem("nutshell_user"), 10) ?
+        <button onClick={() => {
+            history.push(`/chats/edit/${chat.id}`)
+        }}>Edit</button>
+        : ""
+     }
+
 
     </section>
 )
+            }
