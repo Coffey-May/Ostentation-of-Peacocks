@@ -2,57 +2,62 @@
 
 
 import React, { useContext } from "react"
-// import { EmployeeContext } from "./EmployeeProvider"
-// import { LocationContext } from "../locations/LocationProvider"
-
 
 import { FriendContext } from "./FriendProvider"
+<<<<<<< HEAD
 import { userContext } from "./UserProvider"
+=======
+// import { UserContext } from "../auth/UserProvider"
+
+>>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 import Friend from "./Friend"
-import Employee from "./Employee"
-// import "./Employees.css"
 
-export default (props) => {
-    // const locations = useLocations()
-    const { friends } = useContext(FriendContext)
+import "./Friend.css"
 
+<<<<<<< HEAD
     const { users } = useContext(userContext)
+=======
+export default (props) => {
+>>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
+    const { friends, deleteFriend } = useContext(FriendContext)
+   // when render friend componnet will 
+   
+    // console.log(friends)
+ 
+    const activeUser = localStorage.getItem("nutshell_user")
+   
+    console.log(activeUser)
+    // debugger
+  
     return (
+
+
+
         <div className="friends">
             <h1>Friends</h1>
             <button onClick={() => props.history.push("/friends/create")}>
                 Add Friend
             </button>
-            <article className="friendList">
-                {
-                    users.map(friend => {
-                        // Find the USER aka the FRIEND beibg added with the  matching activeUserId in the Users object
-                        const foundedFriend = users.find(
-                            (user) => {
-                                return user.userid === activeUser.Id
-                            }
-                        )
 
-                        // Pass the matching location to Employee component
-                        return <Friend key={user.userid}
-                                         friend={foundedFriend}
-                                         employee={employee} 
-                                         
-                                         />
+            <article className="friendList">
+
+                 {
+                    friends.filter(friend => parseInt(activeUser) === friend.initiatorId).map(friend => {
+                        return <Friend key={friend.id} friend={friend} deleteFriend={deleteFriend}/>
                     })
+                        // const friendsOfActiveUser = friends.filter(friend => activeUser === friend.userName)
+                      
+                    
                 }
+
+
             </article>
 
-
-            {/* //  old  below
-            <article className="employeeList">
-                {employees.map(employee => <employee key={employee.id} employee={employee} />)}
-            </article> */}
         </div>
     )
 
-    }
+}
 
 
 
@@ -62,37 +67,22 @@ export default (props) => {
 
 
 
-//     return (
-//         <div className="employees">
-//         {
-//             // theLocations.map(loc => Location(loc) />)
-//             theEmployees.map(loc => <Employee key={loc.id} employee={loc} />)
-//         }
-//         </div>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-
-
+<<<<<<< HEAD
 // import React, { useContext } from "react"
 // import { FriendContext } from "./FriendProvider"
 // // import { LocationContext } from "../locations/LocationProvider"
 // // import { CustomerContext } from "../customers/CustomerProvider"
 // import Friend from "./Friend"
 // // import "./Friend.css"
+=======
+
+>>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
 
 
 
 
+<<<<<<< HEAD
 
 // export default (props) => {
 //     const { friends } = useContext(FriendContext)
@@ -117,6 +107,8 @@ export default (props) => {
 // }
 
 
+=======
+>>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
 
 

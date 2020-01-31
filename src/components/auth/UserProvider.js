@@ -9,7 +9,8 @@ export const UserProvider = (props) => {
     const [users, setUsers] = useState([])
 
     const getUsers = () => {
-        return fetch("http://localhost:8088/users?_expand=Id")
+        // return fetch("http://localhost:8088/users?_expand=initiatorId",
+        return fetch("http://localhost:8088/users")
             .then(res => res.json())
             .then(setUsers)
     }
@@ -40,10 +41,14 @@ export const UserProvider = (props) => {
         getUsers()
     }, [])
 
-    useEffect(() => {
-        console.log("****  USER APPLICATION STATE CHANGED  ****")
-    }, [users])
+    useEffect(
+        () => {
+            console.log("****  User APPLICATION STATE CHANGED  ****")
+            console.log(users)
+        },
+        [users])
 
+   
     return (
         <UserContext.Provider value={{
             // rememeber to send the deleteEvent for the DELETE
