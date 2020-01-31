@@ -1,4 +1,4 @@
-// json-server -p 3003 -w database.json
+// // json-server -p 8088 -w database.json
 
 import React from "react"
 import { Route } from "react-router-dom"
@@ -33,8 +33,9 @@ import ArticleForm from "./articles/ArticleForm"
 // import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
 // import FriendForm from './friends/FriendForm'
-// import TaskForm from './tasks/TaskForm'
-// import AnimalDetail from "./animal/AnimalDetail"
+import TaskForm from './tasks/TaskForm'
+import { UserProvider } from "./auth/UserProvider"
+
 
 
 
@@ -45,7 +46,20 @@ export default (props) => {
     return (
         <>
     
-
+<TaskProvider>
+    <UserProvider>
+    <Route exact path="/tasks"
+                            render={props => < TaskList {...props} />}
+                        />
+                         <Route path="/tasks/create" render={
+                            props => <TaskForm {...props} />
+                        } />
+                        {/* <Route path="/tasks/edit/:taskId(\d+)" render={
+                            props => <TaskForm {...props} />
+                        } /> 
+         */}
+    </UserProvider>
+</TaskProvider>
         
             
     <ArticleProvider>
@@ -144,4 +158,4 @@ export default (props) => {
 
         </>
     )
-}
+ }

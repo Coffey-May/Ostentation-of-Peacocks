@@ -14,14 +14,14 @@ export const TaskProvider = (props) => {
     const [tasks, setTasks] = useState([])
 
     const getTasks = () => {
-        return fetch("http://localhost:3003/tasks")
+        return fetch("http://localhost:8088/tasks")
             .then(res => res.json())
             .then(setTasks)
     }
 
 
     const updateTask = task => {
-        return fetch(`http://localhost:3003/tasks/${task.id}`, {
+        return fetch(`http://localhost:8088/tasks/${task.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export const TaskProvider = (props) => {
     }
 
     const addTask = task => {
-        return fetch("http://localhost:3003/tasks", {
+        return fetch("http://localhost:8088/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -43,7 +43,7 @@ export const TaskProvider = (props) => {
     }
 
     const releaseTask = task => {
-        return fetch(`http://localhost:3003/tasks/${task.id}`, {
+        return fetch(`http://localhost:8088/tasks/${task.id}`, {
             method: "DELETE",
          
         })
