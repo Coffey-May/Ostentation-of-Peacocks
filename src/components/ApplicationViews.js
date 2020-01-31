@@ -18,71 +18,73 @@ import FriendForm from "./friends/FriendForm";
 import TaskForm from "./tasks/TaskForm";
 
 export default props => {
-  return (
-    <>
-      <TaskProvider>
-        <UserProvider>
-          <Route
-            exact
-            path="/tasks"
-            render={props => <TaskList {...props} />}
-          />
-          <Route
-            path="/tasks/create"
-            render={props => <TaskForm {...props} />}
-          />
-        </UserProvider>
-      </TaskProvider>
-      <ArticleProvider>
-        <Route
-          exact
-          path="/articles"
-          render={props => <ArticleList {...props} />}
-        />
+    return (
+        <>
+            <TaskProvider>
+                <UserProvider>
+                    <Route
+                        exact
+                        path="/tasks"
+                        render={props => <TaskList {...props} />}
+                    />
+                    <Route
+                        path="/tasks/create"
+                        render={props => <TaskForm {...props} />}
+                    />
+                </UserProvider>
+            </TaskProvider>
+            <ArticleProvider>
+                <Route
+                    exact
+                    path="/articles"
+                    render={props => <ArticleList {...props} />}
+                />
 
-        <Route exact path="/" render={props => <ArticleList {...props} />} />
+                <Route exact path="/" render={props => <ArticleList {...props} />} />
 
-        <Route
-          exact
-          path="/articles/create"
-          render={props => <ArticleForm {...props} />}
-        />
-        <Route
-          path="/articles/editArticle/:articleId(\d+)"
-          render={props => <ArticleForm {...props} />}
-        />
-      </ArticleProvider>
+                <Route
+                    exact
+                    path="/articles/create"
+                    render={props => <ArticleForm {...props} />}
+                />
+                <Route
+                    path="/articles/editArticle/:articleId(\d+)"
+                    render={props => <ArticleForm {...props} />}
+                />
+            </ArticleProvider>
 
-      <ChatProvider>
-        <UserProvider>
-          <Route
-            exact
-            path="/chats"
-            render={props => <ChatList {...props} />}
-          />
-          <Route
-            exact
-            path="/chats/create"
-            render={props => <ChatForm {...props} />}
-          />
-          <Route
-            path="/chats/edit/:chatId(\d+)"
-            render={props => <ChatForm {...props} />}
-          />
-        </UserProvider>
-      </ChatProvider>
+            <ChatProvider>
+                <UserProvider>
+                    <Route
+                        exact
+                        path="/chats"
+                        render={props => <ChatList {...props} />}
+                    />
+                    <Route
+                        exact
+                        path="/chats/create"
+                        render={props => <ChatForm {...props} />}
+                    />
+                    <Route
+                        path="/chats/edit/:chatId(\d+)"
+                        render={props => <ChatForm {...props} />}
+                    />
+                </UserProvider>
+            </ChatProvider>
 
-      <FriendProvider>
-        <Route
-          exact
-          path="/friends"
-          render={props => <FriendList {...props} />}
-        />
-        <Route
-          path="/friends/create"
-          render={props => <FriendForm {...props} />}
-        />
-      </FriendProvider>
-    </>
-  );
+            <FriendProvider>
+                <UserProvider>
+                    <Route
+                        exact
+                        path="/friends"
+                        render={props => <FriendList {...props} />}
+                    />
+                    <Route
+                        path="/friends/create"
+                        render={props => <FriendForm {...props} />}
+                    />
+                </UserProvider>
+            </FriendProvider>
+        </>
+    );
 };
