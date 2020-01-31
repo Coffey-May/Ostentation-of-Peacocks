@@ -1,4 +1,4 @@
-// json-server -p 3003 -w database.json
+// // json-server -p 8088 -w database.json
 
 import React from "react"
 import { Route } from "react-router-dom"
@@ -8,18 +8,20 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 // import { EventProvider } from "./event/EventProvider"
 import { FriendProvider } from "./friends/FriendProvider"
 // import { TaskProvider } from "./task/TaskProvider"
-// import ArticleList from "./articles/ArticleList"
+import ArticleList from "./articles/ArticleList"
+import Login from "./auth/Login"
 // import ChatList from "./chats/ChatList"
 // import EventList from "./events/EventList"
 import FriendList from "./friends/FriendList"
 // import TaskList from "./tasks/TaskList"
-// import ArticleForm from "./articles/ArticleForm"
+import ArticleForm from "./articles/ArticleForm"
 // import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
-import FriendForm from './friends/FriendForm'
-// import TaskForm from './tasks/TaskForm'
-// import AnimalDetail from "./animal/AnimalDetail"
-import Login from "./auth/Login"
+// import FriendForm from './friends/FriendForm'
+import TaskForm from './tasks/TaskForm'
+import { UserProvider } from "./auth/UserProvider"
+
+
 
 
 
@@ -29,27 +31,49 @@ export default (props) => {
     return (
         <>
     
-
+<TaskProvider>
+    <UserProvider>
+    <Route exact path="/tasks"
+                            render={props => < TaskList {...props} />}
+                        />
+                         <Route path="/tasks/create" render={
+                            props => <TaskForm {...props} />
+                        } />
+                        {/* <Route path="/tasks/edit/:taskId(\d+)" render={
+                            props => <TaskForm {...props} />
+                        } /> 
+         */}
+    </UserProvider>
+</TaskProvider>
         
-{/*             
-// {/* //     {/* <ArticleProvider> */}
-{/* // //                 <Route exact path="/articles" render={ */} */}
-// //                     props => {
-// //                         if (localStorage.getItem("nutshell_user") !== null) {
-// //                             return <ArticleList {...props} />
-// //                         }
-// //                         return <Login {...props} />
-// //                     }
-// //                 } />
-// //                 <Route exact path="/" render={
-// //                     props => {
-// //                         if (localStorage.getItem("nutshell_user") !== null) {
-// //                             return <ArticleList {...props} />
-// //                         }
-// //                         return <Login {...props} />
-// //                     }
-// //                 } />
-// //             </ArticleProvider> */}
+            
+    <ArticleProvider>
+                <Route exact path="/articles" render={
+                    props => {
+                        if (localStorage.getItem("nutshell_user") !== null) {
+                            return <ArticleList {...props} />
+                        }
+                        return <Login {...props} />
+                    }
+                } />
+                <Route exact path="/" render={
+                    props => {
+                        if (localStorage.getItem("nutshell_user") !== null) {
+                            return <ArticleList {...props} />
+                        }
+                        return <Login {...props} />
+                    }
+                } />
+                <Route
+              exact
+              path="/articles/create"
+              render={props => <ArticleForm {...props} />}
+            />
+            <Route
+              path="/articles/editArticle/:articleId(\d+)"
+              render={props => <ArticleForm {...props} />}
+            />
+            </ArticleProvider>
 
 
 
@@ -131,4 +155,4 @@ export default (props) => {
 
        </>
     )
-}  
+ }
