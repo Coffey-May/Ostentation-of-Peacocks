@@ -31,6 +31,10 @@ export default props => {
             path="/tasks/create"
             render={props => <TaskForm {...props} />}
           />
+          <Route
+            path="/tasks/editTasks/:taskId(\d+)"
+            render={props => <TaskForm {...props} />}
+          />
         </UserProvider>
       </TaskProvider>
       <ArticleProvider>
