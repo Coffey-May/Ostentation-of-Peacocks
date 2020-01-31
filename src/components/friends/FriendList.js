@@ -5,6 +5,7 @@ import React, { useContext } from "react"
 
 import { FriendContext } from "./FriendProvider"
 import { UserContext } from "..auth/UserProvider"
+// import { userContext } from "./UserProvider"
 // import { UserContext } from "../auth/UserProvider"
 
 import Friend from "./Friend"
