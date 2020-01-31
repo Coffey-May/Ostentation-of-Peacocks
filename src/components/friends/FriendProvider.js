@@ -13,7 +13,9 @@ export const FriendProvider = (props) => {
     const [friends, setFriends] = useState([])
 
     const getFriends = () => {
-        return fetch("http://localhost:8088/friends")
+        return fetch("http://localhost:8088/friends?_expand=user", 
+           
+        )
             .then(res => res.json())
             .then(setFriends)
     }
@@ -34,7 +36,7 @@ export const FriendProvider = (props) => {
         })
         .then(getFriends)
     }
-    const updateFriend = friend => {
+    const editFriend = friend => {
         return fetch(`http://localhost:8088/friends/${friend.id}`, {
             method: "PUT",
             headers: {
@@ -58,9 +60,14 @@ export const FriendProvider = (props) => {
         console.log("****  FRIEND APPLICATION STATE CHANGED  ****")
     }, [friends])
 
+
+ 
+
+
+
     return (
         <FriendContext.Provider value={{
-            friends, addFriend, deleteFriend, updateFriend
+            friends, addFriend, deleteFriend, editFriend
         }}>
             {props.children}
         </FriendContext.Provider>
