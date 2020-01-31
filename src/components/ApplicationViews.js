@@ -37,6 +37,8 @@ export default props => {
           />
         </UserProvider>
       </TaskProvider>
+
+
       <ArticleProvider>
         <Route
           exact
@@ -45,7 +47,6 @@ export default props => {
         />
 
         <Route exact path="/" render={props => <ArticleList {...props} />} />
-
         <Route
           exact
           path="/articles/create"
@@ -56,6 +57,7 @@ export default props => {
           render={props => <ArticleForm {...props} />}
         />
       </ArticleProvider>
+
 
       <ChatProvider>
         <UserProvider>
@@ -75,6 +77,7 @@ export default props => {
           />
         </UserProvider>
       </ChatProvider>
+
 
       <FriendProvider>
         <Route
