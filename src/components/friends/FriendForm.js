@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { FriendContext } from "./FriendProvider";
 
 export default props => {
-  const { friends } = useContext(FriendContext);
+  // const { friends } = useContext(FriendContext);
   const { addFriend, friends } = useContext(FriendContext);
   const [friend, setFriend] = useState({});
 
