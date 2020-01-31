@@ -4,21 +4,15 @@
 import React, { useContext } from "react"
 
 import { FriendContext } from "./FriendProvider"
-<<<<<<< HEAD
-import { userContext } from "./UserProvider"
-=======
+import { UserContext } from "..auth/UserProvider"
 // import { UserContext } from "../auth/UserProvider"
 
->>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 import Friend from "./Friend"
 
 import "./Friend.css"
 
-<<<<<<< HEAD
-    const { users } = useContext(userContext)
-=======
+    const { users } = useContext(UserContext)
 export default (props) => {
->>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
     const { friends, deleteFriend } = useContext(FriendContext)
    // when render friend componnet will 
@@ -67,22 +61,18 @@ export default (props) => {
 
 
 
-<<<<<<< HEAD
 // import React, { useContext } from "react"
 // import { FriendContext } from "./FriendProvider"
 // // import { LocationContext } from "../locations/LocationProvider"
 // // import { CustomerContext } from "../customers/CustomerProvider"
 // import Friend from "./Friend"
 // // import "./Friend.css"
-=======
-
->>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
 
 
 
 
-<<<<<<< HEAD
+
 
 // export default (props) => {
 //     const { friends } = useContext(FriendContext)
@@ -107,8 +97,6 @@ export default (props) => {
 // }
 
 
-=======
->>>>>>> e35b565bea69b973fbeb49f0eac71247fcbac466
 
 
 
