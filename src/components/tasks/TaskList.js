@@ -24,7 +24,7 @@ export default (props) => {
 		{tasks.map(task => {
 			// const location = locations.find(loc => loc.id === animal.locationId) || {}
 			// const user = users.find(use => use.id === task.userId) || {}
-    return <Task key={task.id} task={task}  />
+    return <Task {...props} key={task.id} task={task}  />
 })}
 		</div>
 		</>

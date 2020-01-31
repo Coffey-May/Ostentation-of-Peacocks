@@ -6,6 +6,7 @@ export default (props) => {
 	const { addTask, tasks, updateTask } = useContext(TaskContext);
 	const [ task, setTask ] = useState({});
     const taskName = useRef("")
+    const taskCompletion = useRef("")
 	const editMode = props.match.params.hasOwnProperty('taskId');
     
 	const handleControlledInputChange = (event) => {
@@ -34,15 +35,18 @@ export default (props) => {
 			updateTask({
 				id: task.id,
 				userId: task.userId,
-				taskText: task.taskName,
-				date: Date.now()
+                taskName: task.taskName,
+                taskComletion: false,
+				taskETA: Date.now()
 			}).then(() => props.history.push('/tasks'));
 		} else {
 			addTask({
 				
-				// userId: task.userId,
+				
 				taskName: task.taskName,
-				date: Date.now(),
+                taskETA: Date.now(),
+               
+                taskCompletion: false,
 				userId: parseInt(localStorage.getItem('nutshell_user'))
 			}).then(() => props.history.push('/tasks'));
 		}
@@ -66,6 +70,23 @@ export default (props) => {
 						proptype="varchar"
 						placeholder="Task name"
 						defaultValue={task.taskName}
+						onChange={handleControlledInputChange}
+					/>
+				</div>
+			</fieldset>
+            <fieldset>
+				<div className="form-group">
+					<label htmlFor="name">Task ETA: </label>
+					<input
+						type="date"
+                        name="taskCompletion"
+                        ref={taskCompletion}
+						required
+						autoFocus
+						className="form-control"
+						proptype="varchar"
+						placeholder="Task ETA"
+						defaultValue={task.taskETA}
 						onChange={handleControlledInputChange}
 					/>
 				</div>

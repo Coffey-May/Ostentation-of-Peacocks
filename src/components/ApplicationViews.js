@@ -18,27 +18,31 @@ import FriendForm from "./friends/FriendForm";
 import TaskForm from "./tasks/TaskForm";
 
 export default props => {
-    return (
-        <>
-            <TaskProvider>
-                <UserProvider>
-                    <Route
-                        exact
-                        path="/tasks"
-                        render={props => <TaskList {...props} />}
-                    />
-                    <Route
-                        path="/tasks/create"
-                        render={props => <TaskForm {...props} />}
-                    />
-                </UserProvider>
-            </TaskProvider>
-            <ArticleProvider>
-                <Route
-                    exact
-                    path="/articles"
-                    render={props => <ArticleList {...props} />}
-                />
+  return (
+    <>
+      <TaskProvider>
+        <UserProvider>
+          <Route
+            exact
+            path="/tasks"
+            render={props => <TaskList {...props} />}
+          />
+          <Route
+            path="/tasks/create"
+            render={props => <TaskForm {...props} />}
+          />
+          <Route
+            path="/tasks/editTasks/:taskId(\d+)"
+            render={props => <TaskForm {...props} />}
+          />
+        </UserProvider>
+      </TaskProvider>
+      <ArticleProvider>
+        <Route
+          exact
+          path="/articles"
+          render={props => <ArticleList {...props} />}
+        />
 
                 <Route exact path="/" render={props => <ArticleList {...props} />} />
 
