@@ -31,10 +31,21 @@ export const ArticleProvider = (props) => {
     }
 
     const releaseArticle = articleId => {
-        return fetch(`http://localhost:8088/Articles/${articleId}`, {
+        return fetch(`http://localhost:8088/articles/${articleId}`, {
             method: "DELETE"
         })
             .then(getArticles)
+    }
+
+    const editArticle = article => {
+        return fetch(`http://localhost:8088/articles/${article.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(article)
+        })
+        .then(getArticles)
     }
 
     /*
@@ -54,7 +65,7 @@ export const ArticleProvider = (props) => {
 
     return (
         <ArticleContext.Provider value={{
-            articles, addArticle, releaseArticle
+            articles, addArticle, releaseArticle, editArticle
         }}>
             {props.children}
         </ArticleContext.Provider>

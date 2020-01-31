@@ -8,12 +8,13 @@ import { ArticleProvider } from "./articles/ArticleProvider"
 // import { EventProvider } from "./event/EventProvider"
 // import { FriendProvider } from "./friend/FriendProvider"
 // import { TaskProvider } from "./task/TaskProvider"
-// import ArticleList from "./articles/ArticleList"
+import ArticleList from "./articles/ArticleList"
+import Login from "./auth/Login"
 // import ChatList from "./chats/ChatList"
 // import EventList from "./events/EventList"
 // import FriendList from "./friends/FriendList"
 // import TaskList from "./tasks/TaskList"
-// import ArticleForm from "./articles/ArticleForm"
+import ArticleForm from "./articles/ArticleForm"
 // import ChatForm from './chats/ChatForm'
 // import EventForm from "./events/EventForm"
 // import FriendForm from './friends/FriendForm'
@@ -33,7 +34,7 @@ export default (props) => {
         
             
     <ArticleProvider>
-                {/* <Route exact path="/articles" render={
+                <Route exact path="/articles" render={
                     props => {
                         if (localStorage.getItem("nutshell_user") !== null) {
                             return <ArticleList {...props} />
@@ -47,8 +48,17 @@ export default (props) => {
                             return <ArticleList {...props} />
                         }
                         return <Login {...props} />
-                    } */}
+                    }
                 } />
+                <Route
+              exact
+              path="/articles/create"
+              render={props => <ArticleForm {...props} />}
+            />
+            <Route
+              path="/articles/editArticle/:articleId(\d+)"
+              render={props => <ArticleForm {...props} />}
+            />
             </ArticleProvider>
 
 
