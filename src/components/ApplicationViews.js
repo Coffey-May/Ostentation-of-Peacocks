@@ -50,7 +50,6 @@ export default props => {
           render={props => <EventList {...props} />}
         />
 
-        <Route exact path="/" render={props => <EventList {...props} />} />
         <Route
           exact
           path="/events/create"
@@ -70,7 +69,6 @@ export default props => {
           render={props => <ArticleList {...props} />}
         />
 
-        <Route exact path="/" render={props => <ArticleList {...props} />} />
         <Route
           exact
           path="/articles/create"
@@ -87,7 +85,7 @@ export default props => {
         <UserProvider>
           <Route
             exact
-            path="/chats"
+            path="/"
             render={props => <ChatList {...props} />}
           />
           <Route
