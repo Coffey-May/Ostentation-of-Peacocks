@@ -84,6 +84,7 @@ export default props => {
 
 
       <ChatProvider>
+        <FriendProvider>
         <UserProvider>
           <Route
             exact
@@ -99,13 +100,7 @@ export default props => {
             path="/chats/edit/:chatId(\d+)"
             render={props => <ChatForm {...props} />}
           />
-        </UserProvider>
-      </ChatProvider>
-
-
-      <FriendProvider>
-        <UserProvider>
-        <Route
+           <Route
           exact
           path="/friends"
           render={props => <FriendList {...props} />}
@@ -119,7 +114,9 @@ export default props => {
         render={props => <ChatAddFriend {...props} />}
         />
         </UserProvider>
-      </FriendProvider>
+        </FriendProvider>
+      </ChatProvider>
+
     </>
   );
 };
