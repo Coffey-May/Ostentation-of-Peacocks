@@ -4,12 +4,16 @@
 import React, { useContext } from "react"
 
 import { FriendContext } from "./FriendProvider"
+// import { UserContext } from "..auth/UserProvider"
+
+// import { userContext } from "./UserProvider"
 // import { UserContext } from "../auth/UserProvider"
 
 import Friend from "./Friend"
 
 import "./Friend.css"
 
+    // const { users } = useContext(UserContext)
 export default (props) => {
 
     const { friends, deleteFriend } = useContext(FriendContext)
@@ -59,10 +63,40 @@ export default (props) => {
 
 
 
+// import React, { useContext } from "react"
+// import { FriendContext } from "./FriendProvider"
+// // import { LocationContext } from "../locations/LocationProvider"
+// // import { CustomerContext } from "../customers/CustomerProvider"
+// import Friend from "./Friend"
+// // import "./Friend.css"
 
 
 
 
+
+
+
+// export default (props) => {
+//     const { friends } = useContext(FriendContext)
+
+//     return (
+//         <>
+//             <h1>Friends</h1>
+
+//             <button onClick={() => props.history.push("/friends/create")}>
+//                 Add Friend
+//             </button>
+//             <div className="friends">
+
+//                 {
+//                     friends.map(friend => {
+//                         return <Friend key={friend.id} friend={friend} />
+//                     })
+//                 }
+//             </div>
+//         </>
+//     )
+// }
 
 
 
