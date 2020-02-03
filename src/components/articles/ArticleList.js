@@ -8,7 +8,7 @@ export default (props) => {
 
   return (
       <>
-          <h1>articles</h1>
+          <h1 className="article_header">ARTICLES</h1>
 
           <button onClick={() => props.history.push("/articles/create")}>
               Share Stuff
