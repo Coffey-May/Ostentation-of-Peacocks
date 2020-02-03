@@ -6,6 +6,7 @@ import { UserProvider } from "./auth/UserProvider";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { FriendProvider } from "./friends/FriendProvider";
 import { ChatProvider } from "./chats/ChatProvider";
+import { EventProvider} from "./events/EventProvider";
 import ChatList from "./chats/ChatList";
 import ChatForm from "./chats/ChatForm";
 import { TaskProvider } from "./tasks/TaskProvider";
@@ -17,6 +18,8 @@ import ArticleForm from "./articles/ArticleForm";
 import FriendForm from "./friends/FriendForm";
 import TaskForm from "./tasks/TaskForm";
 import ChatAddFriend from "./chats/ChatAddFriend";
+import EventList from "./events/EventList";
+import EventForm from "./events/EventForm"
 
 
 export default props => {
@@ -39,6 +42,27 @@ export default props => {
           />
         </UserProvider>
       </TaskProvider>
+
+      <EventProvider>
+        <Route
+          exact
+          path="/events"
+          render={props => <EventList {...props} />}
+        />
+
+        <Route exact path="/" render={props => <EventList {...props} />} />
+        <Route
+          exact
+          path="/events/create"
+          render={props => <EventForm {...props} />}
+        />
+        <Route
+          path="/events/editEvents/:eventId(\d+)"
+          render={props => <EventForm {...props} />}
+        />
+      </EventProvider>
+
+
       <ArticleProvider>
         <Route
           exact
@@ -47,7 +71,6 @@ export default props => {
         />
 
         <Route exact path="/" render={props => <ArticleList {...props} />} />
-
         <Route
           exact
           path="/articles/create"
@@ -58,6 +81,7 @@ export default props => {
           render={props => <ArticleForm {...props} />}
         />
       </ArticleProvider>
+
 
       <ChatProvider>
         <UserProvider>
@@ -77,6 +101,7 @@ export default props => {
           />
         </UserProvider>
       </ChatProvider>
+
 
       <FriendProvider>
         <UserProvider>
