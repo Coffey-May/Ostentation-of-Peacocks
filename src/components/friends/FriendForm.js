@@ -34,7 +34,7 @@ export default props => {
       if (initiatorId !== foundUser.id) {
         if (foundExistingFriend === undefined) {
           addFriend({
-            userId: friend.id,
+            userId: foundUser.id,
             initiatorId: parseInt(localStorage.getItem("nutshell_user"))
           }).then(() => props.history.push("/friends"));
         } else {
@@ -51,11 +51,7 @@ export default props => {
       }
     }
   }
-      const foundFriendsArray = friends.filter(
-        friendRel =>
-          friendRel.initiatorId ===
-          parseInt(localStorage.getItem("nutshell_user"))
-      );
+      
     return (
       <form className="FriendForm">
         <h2 className="FriendForm__title"></h2>
@@ -88,9 +84,7 @@ export default props => {
           Add Friend
         </button>
 
-        {foundFriendsArray.map(f => (
-          <friend key={f.id} friend={f} />
-        ))}
+        
       </form>
     );
   
