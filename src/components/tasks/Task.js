@@ -9,7 +9,7 @@ export default ({ task, history }) => {
         <h3 className="task__name">
            <div className="task_name">{task.taskName}</div>
            <div className="task_name">{new Date(task.taskETA).toLocaleDateString('en-US')}</div>
-           <div className="task_name">{task.userId}</div>
+           {/* <div className="task_name">{task.userId}</div> */}
            <input type="checkbox"></input>
            <button className="btn--edit" onClick={() => {
         history.push(`/tasks/editTasks/${task.id}`)

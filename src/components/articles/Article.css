@@ -2,3 +2,6 @@
     text-align: center;
     letter-spacing: 10vw;
 }
+.ArticleCard{
+    border:1px solid black;
+}
