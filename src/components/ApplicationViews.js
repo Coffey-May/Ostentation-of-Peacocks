@@ -19,7 +19,8 @@ import FriendForm from "./friends/FriendForm";
 import TaskForm from "./tasks/TaskForm";
 import ChatAddFriend from "./chats/ChatAddFriend";
 import EventList from "./events/EventList";
-import EventForm from "./events/EventForm"
+import EventForm from "./events/EventForm";
+
 
 
 export default props => {

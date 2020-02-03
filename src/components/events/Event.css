@@ -5,6 +5,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: aliceblue;
 }
 h3{
    margin:0 auto ;
@@ -16,6 +17,10 @@ h3{
 
   .event_user{
     font-style: italic;
+    background-color: cornsilk;
   }
-  
+  .ev_header{
+    text-align: center;
+    letter-spacing: 10vw;
+  }
   
