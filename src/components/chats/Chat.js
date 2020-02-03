@@ -2,8 +2,14 @@ import React, { useContext } from "react"
 import "./Chat.css"
 import { Link } from "react-router-dom"
 import { ChatContext } from "./ChatProvider"
+import { FriendContext } from "../friends/FriendProvider"
+
 
 export default ({ chat, history, user }) => {
+    const {friends } = useContext(FriendContext)
+
+    const friendsOfActiveUser = friends.filter(f => f.initiatorId === parseInt(localStorage.getItem("nutshell_user"), 10))
+    const chatOfMatchingFriend = friendsOfActiveUser.find(f => f.userId === chat.userId)
 
     
 
@@ -11,7 +17,7 @@ return (
 
     <section className="chat">
         <h3 className="chat__name">
-        {chat.userId === parseInt(localStorage.getItem("nutshell_user"), 10) ?
+        {chat.userId === parseInt(localStorage.getItem("nutshell_user"), 10) || chatOfMatchingFriend ?
             <div>{user.userEmail} </div> 
             :       
             <Link to={`/friends/${user.id}`}>
