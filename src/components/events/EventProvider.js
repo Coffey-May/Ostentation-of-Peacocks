@@ -10,10 +10,10 @@ export const EventContext = React.createContext()
  This component establishes what data can be used.
  */
 export const EventProvider = (props) => {
-    const [EventArray, events, setEvents] = useState([])
+    const [events, setEvents] = useState([])
 
     const getEvents = () => {
-        return fetch("http://localhost:8088/events")
+        return fetch("http://localhost:8088/events?_expand=user")
             .then(res => res.json())
             .then(setEvents)
     }
@@ -47,7 +47,7 @@ export const EventProvider = (props) => {
             },
             body: JSON.stringify(event)
         })
-            .then(getEvent)
+            .then(getEvents)
     }
 
 
@@ -65,11 +65,6 @@ export const EventProvider = (props) => {
         // console.log(Events)
     }, [events])
 
-
-    useEffect(() => {
-        console.log(EventArray)
-        // console.log(Events)
-    }, [EventArray])
 
 
     return (
