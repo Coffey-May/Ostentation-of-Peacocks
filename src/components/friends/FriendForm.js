@@ -44,7 +44,7 @@ export default props => {
           }
         }
       } else {
-        alert("You can't add yourself, dummy");
+        alert("You can't add yourself");
         {
           friendName.current.value = "";
         }

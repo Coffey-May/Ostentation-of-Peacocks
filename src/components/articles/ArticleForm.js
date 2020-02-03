@@ -81,7 +81,7 @@ export default props => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="URL">Learn Ya The Interstate: </label>
+          <label htmlFor="URL">URL Learn Ya The Interstate: </label>
           <input 
            type="text" 
            name="articleURL" 
