@@ -10,7 +10,6 @@ import ChatList from "./chats/ChatList";
 import ChatForm from "./chats/ChatForm";
 import { TaskProvider } from "./tasks/TaskProvider";
 import ArticleList from "./articles/ArticleList";
-import Login from "./auth/Login";
 import FriendList from "./friends/FriendList";
 import TaskList from "./tasks/TaskList";
 import ArticleForm from "./articles/ArticleForm";
@@ -73,15 +72,18 @@ export default props => {
       </ChatProvider>
 
       <FriendProvider>
-        <Route
-          exact
-          path="/friends"
-          render={props => <FriendList {...props} />}
-        />
-        <Route
-          path="/friends/create"
-          render={props => <FriendForm {...props} />}
-        />
+        <UserProvider>
+          <Route
+            exact
+            path="/friends"
+            render={props => <FriendList {...props} />}
+          />
+          <Route
+            exact
+            path="/friends/create"
+            render={props => <FriendForm {...props} />}
+          />
+        </UserProvider>
       </FriendProvider>
     </>
   );
