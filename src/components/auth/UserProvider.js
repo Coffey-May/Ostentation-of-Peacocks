@@ -53,7 +53,7 @@ export const UserProvider = (props) => {
         <UserContext.Provider value={{
             // rememeber to send the deleteEvent for the DELETE
             // need to send the editEvent for the EDIT
-            users, addUser, 
+            users, addUser 
         }}>
             {props.children}
         </UserContext.Provider>
