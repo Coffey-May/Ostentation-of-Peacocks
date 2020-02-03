@@ -22,7 +22,7 @@ export default (props) => {
 
 
         <div className="friends">
-            <h1>Friends</h1>
+            <h1>FRIENDS</h1>
             <button onClick={() => props.history.push("/friends/create")}>
                 Add Friend
             </button>
