@@ -6,11 +6,12 @@ import { UserProvider } from "./auth/UserProvider";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { FriendProvider } from "./friends/FriendProvider";
 import { ChatProvider } from "./chats/ChatProvider";
-import { EventProvider} from "./events/EventProvider";
+import { EventProvider } from "./events/EventProvider";
 import ChatList from "./chats/ChatList";
 import ChatForm from "./chats/ChatForm";
 import { TaskProvider } from "./tasks/TaskProvider";
 import ArticleList from "./articles/ArticleList";
+import Login from "./auth/Login";
 import FriendList from "./friends/FriendList";
 import TaskList from "./tasks/TaskList";
 import ArticleForm from "./articles/ArticleForm";
@@ -50,7 +51,7 @@ export default props => {
           render={props => <EventList {...props} />}
         />
 
-        <Route exact path="/" render={props => <EventList {...props} />} />
+        {/* <Route exact path="/" render={props => <EventList {...props} />} /> */}
         <Route
           exact
           path="/events/create"
@@ -70,7 +71,7 @@ export default props => {
           render={props => <ArticleList {...props} />}
         />
 
-        <Route exact path="/" render={props => <ArticleList {...props} />} />
+        {/* <Route exact path="/" render={props => <ArticleList {...props} />} /> */}
         <Route
           exact
           path="/articles/create"
@@ -87,7 +88,7 @@ export default props => {
         <UserProvider>
           <Route
             exact
-            path="/chats"
+            path="/"
             render={props => <ChatList {...props} />}
           />
           <Route
@@ -105,19 +106,19 @@ export default props => {
 
       <FriendProvider>
         <UserProvider>
-        <Route
-          exact
-          path="/friends"
-          render={props => <FriendList {...props} />}
-        />
-        <Route
-          path="/friends/create"
-          render={props => <FriendForm {...props} />}
-        />
-        <Route
-        exact path="/friends/:friendId(\d+)"
-        render={props => <ChatAddFriend {...props} />}
-        />
+          <Route
+            exact
+            path="/friends"
+            render={props => <FriendList {...props} />}
+          />
+          <Route
+            path="/friends/create"
+            render={props => <FriendForm {...props} />}
+          />
+          <Route
+            exact path="/friends/:friendId(\d+)"
+            render={props => <ChatAddFriend {...props} />}
+          />
         </UserProvider>
       </FriendProvider>
     </>
