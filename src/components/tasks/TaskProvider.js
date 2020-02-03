@@ -31,6 +31,21 @@ export const TaskProvider = (props) => {
             .then(getTasks)
     }
 
+
+    const completeTask = task => {
+        return fetch(`http://localhost:8088/tasks/${task.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(task)
+        })
+            .then(getTasks)
+    }
+
+
+
+
     const addTask = task => {
         return fetch("http://localhost:8088/tasks", {
             method: "POST",
@@ -65,7 +80,7 @@ export const TaskProvider = (props) => {
 
     return (
         <TaskContext.Provider value={{
-            tasks, addTask, releaseTask, updateTask
+            tasks, addTask, releaseTask, updateTask, completeTask
         }}>
             {props.children}
         </TaskContext.Provider>
