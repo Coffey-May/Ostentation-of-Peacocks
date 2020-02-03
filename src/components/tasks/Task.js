@@ -12,9 +12,7 @@ export default ({ task, history }) => {
         <div className="task_name">{task.userId}</div>
 
 
-        {/* Below is the original code and logic */}
-        {/* <input type="checkbox"></input> */}
-
+     
         <button className="btn--edit" onClick={() => {
           history.push(`/tasks/editTasks/${task.id}`)
         }}>edit</button>
@@ -35,7 +33,7 @@ export default ({ task, history }) => {
 
           onClick={() => {
             // Code to delete animal from database
-            completeTask(task).then(() => {
+            completeTask({taskCompletion: true,},task.id).then(() => {
               
               history.push("/tasks");
             });
@@ -50,10 +48,3 @@ export default ({ task, history }) => {
 }
 
 
-const completeTask = () => {
-  
-    completeTask({
-    
-              taskCompletion: true,
-    
-    },task.id).then(() => props.history.push('/tasks'))

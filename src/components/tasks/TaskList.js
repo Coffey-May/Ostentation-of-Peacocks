@@ -9,9 +9,7 @@ import './Task.css';
 
 export default (props) => {
 	const { tasks } = useContext(TaskContext);
-	// // const { locations } = useContext(LocationContext);
-	// const { users } = useContext(UserContext);
-
+	
 	return (
 <>
 
@@ -22,8 +20,8 @@ export default (props) => {
 		<div className="tasks">
 			
 		{tasks.map(task => {
-			// const location = locations.find(loc => loc.id === animal.locationId) || {}
-			// const user = users.find(use => use.id === task.userId) || {}
+				if(task.taskCompletion === false)
+			
     return <Task {...props} key={task.id} task={task}  />
 })}
 		</div>
