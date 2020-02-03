@@ -40,7 +40,7 @@ const Login = props => {
         <main className="container--login">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Welcome to Nutshell</h1>
+                    <h1 className="login_header">Welcome to Nutshell</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
