@@ -5,7 +5,7 @@ import { FriendContext } from "./FriendProvider"
 // import { FriendContext } from "./FriendProvider"
 // import "./Friend.css"
 
-// const { friends, deleteFriend } = useContext(FriendContext)
+const { friends, deleteFriend } = useContext(FriendContext)
 
 // if functions have more than one line of logic - that logic must be wrapped in curly {}
 //  and any returns must be explicit
