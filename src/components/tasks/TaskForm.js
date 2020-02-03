@@ -54,8 +54,8 @@ export default (props) => {
 
 	return (
 		<form className="taskForm">
-			<h2 className="taskForm__title">create task
-            {editMode ? "edit" : "add"}
+			<h2 className="taskForm__title">
+            {editMode ? "edit" : "add task"}
             </h2>
 			<fieldset>
 				<div className="form-group">

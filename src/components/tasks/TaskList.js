@@ -13,7 +13,7 @@ export default (props) => {
 	return (
 <>
 
-		<h1>Tasks</h1>
+		<h1>TASKS</h1>
         <button onClick={() => props.history.push("/tasks/create")}>
             Add Task
         </button>

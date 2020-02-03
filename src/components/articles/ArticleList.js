@@ -2,25 +2,59 @@ import React, { useContext } from "react";
 import Article from "./Article";
 import "./Article.css";
 import { ArticleContext } from "./ArticleProvider";
+import { FriendContext } from "../friends/FriendProvider";
 
 export default (props) => {
   const { articles } = useContext(ArticleContext)
+  const { friends} = useContext(FriendContext)
 
-  return (
-      <>
-          <h1>articles</h1>
+  let isFriend = false;
 
-          <button onClick={() => props.history.push("/articles/create")}>
-              Share Stuff
-          </button>
-          <div className="articles">
+  const usersArticles = articles.filter(
+    article =>
+        article.userId === parseInt(localStorage.getItem("nutshell_user"))
+)
 
-              {
-                  articles.map(article => {
-                      return <Article key={article.id} article={article} {...props} />
-                  })
+  let friendsArticles = []
+    friends.map(friend => {
+        if (friend.initiatorId === parseInt(localStorage.getItem("nutshell_user"))) {
+            articles.filter(
+                article => {  
+                    if (article.userId === friend.user.id) {
+                        friendsArticles.push(article)
+                    }
+                }
+            )
+        }
+    })
+
+    const combinedArray = usersArticles.concat(friendsArticles)
+    const sortedCombinedArray = combinedArray.sort(function(a, b) {
+      return new Date(b.date) - new Date(a.date);
+    })
+
+    return (
+        <section className="ArticlesContainer">
+                <h1>ARTICLES</h1>
+    
+           <button className="btn btn-primary" onClick={() => {
+                    props.history.push(`/articles/create`)
+                }}>Add Articles</button>
+            <div className="ArticlesSection">
+          {
+            sortedCombinedArray.map(singleArticles => {
+              if (singleArticles.userId != parseInt(localStorage.getItem("nutshell_user"))) {
+                isFriend = true;
+    
               }
-          </div>
-      </>
-  )
+                return (
+                    <Article props={props} key={singleArticles.id}
+                          article={singleArticles}
+                          friendStatus={isFriend} />
+                )
+            })
+          }</div>
+        </section>
+      )
+
 }
