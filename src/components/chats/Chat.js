@@ -11,11 +11,15 @@ return (
 
     <section className="chat">
         <h3 className="chat__name">
+        {chat.userId === parseInt(localStorage.getItem("nutshell_user"), 10) ?
+            <div>{user.userEmail} </div> 
+            :       
             <Link to={`/friends/${user.id}`}>
                 {/* This above link needs to go to a new page with an add friend component    
              */}
                 {user.userEmail}
             </Link>
+}
         </h3>
         <div className="chat__text"> {chat.chatText}</div>
         <div className="chat__date"> {new Date(chat.date).toLocaleDateString('en-US')}</div>
