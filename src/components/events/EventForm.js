@@ -76,7 +76,7 @@ export default props => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="eventLocation">Event Deatils:</label>
+          <label htmlFor="eventLocation">Event Details:</label>
           <input 
            type="text" 
            name="eventLocation" 
