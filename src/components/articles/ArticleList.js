@@ -35,7 +35,7 @@ export default (props) => {
 
     return (
         <section className="ArticlesContainer">
-                <h2>Articles</h2>
+                <h1>ARTICLES</h1>
     
            <button className="btn btn-primary" onClick={() => {
                     props.history.push(`/articles/create`)
