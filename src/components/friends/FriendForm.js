@@ -1,76 +1,97 @@
-    import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { FriendContext } from "./FriendProvider";
+import { UserContext } from "../auth/UserProvider";
 
 export default props => {
-  // const { friends } = useContext(FriendContext);
   const { addFriend, friends } = useContext(FriendContext);
+  const { users } = useContext(UserContext);
   const [friend, setFriend] = useState({});
+  const friendName = useRef("");
 
-  const editMode = props.match.params.hasOwnProperty("friendId");
-
-  const handleControlledInputChange = event => {
-    /*
+  /*
             When changing a state object or array, always create a new one
             and change state instead of modifying current one
         */
+
+  const handleControlledInputChange = event => {
     const newFriend = Object.assign({}, friend);
     newFriend[event.target.name] = event.target.value;
     setFriend(newFriend);
   };
 
-  const setDefaults = () => {
-    if (editMode) {
-      const friendId = parseInt(props.match.params.friendId);
-      const selectedFriend = friends.find(a => a.id === friendId) || {};
-      setFriend(selectedFriend);
-    }
-  };
-
-  useEffect(() => {
-    setDefaults();
-  }, [friends]);
-
   const constructNewFriend = () => {
-    if (editMode) {
-      addFriend({
-        id: friend.userId,
-        initiatorId: parseInt(localStorage.getItem("nutshell_user"))
-      }).then(() => props.history.push("/friends"));
+    const friendUserName = friendName.current.value;
+    const initiatorId = parseInt(localStorage.getItem("nutshell_user"));
+    const foundUser = users.find(user => user.userName === friendUserName);
+    if (foundUser === undefined) {
+      alert("User not found");
+    } else {
+      const foundExistingFriend = friends.find(
+        friendRel =>
+          friendRel.userId === foundUser.id &&
+          initiatorId === friendRel.initiatorId
+      );
+      if (initiatorId !== foundUser.id) {
+        if (foundExistingFriend === undefined) {
+          addFriend({
+            userId: friend.id,
+            initiatorId: parseInt(localStorage.getItem("nutshell_user"))
+          }).then(() => props.history.push("/friends"));
+        } else {
+          alert("User is already a friend");
+          {
+            friendName.current.value = "";
+          }
+        }
+      } else {
+        alert("You can't add yourself, dummy");
+        {
+          friendName.current.value = "";
+        }
+      }
     }
-  };
+  }
+      const foundFriendsArray = friends.filter(
+        friendRel =>
+          friendRel.initiatorId ===
+          parseInt(localStorage.getItem("nutshell_user"))
+      );
+    return (
+      <form className="FriendForm">
+        <h2 className="FriendForm__title"></h2>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="name">Future BFF: </label>
+            <input
+              type="text"
+              name="friendName"
+              required
+              autoFocus
+              className="form-control"
+              ref={friendName}
+              proptype="varchar"
+              placeholder="Friend name"
+              defaultValue={friend.userId}
+              onChange={handleControlledInputChange}
+            />
+          </div>
+        </fieldset>
 
-  return (
-    <form className="FriendForm">
-      <h2 className="FriendForm__title">
-        {editMode ? "Update Friend" : "Admit Friend"}
-      </h2>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="name">Future BFF: </label>
-          <input
-            type="text"
-            id="email"
-            required
-            autoFocus
-            className="form-control"
-            proptype="varchar"
-            placeholder="Future BFF"
-            defaultValue={friend.userId}
-            onChange={handleControlledInputChange}
-          />
-        </div>
-      </fieldset>
+        <button
+          type="submit"
+          onClick={evt => {
+            evt.preventDefault();
+            constructNewFriend();
+          }}
+          className="btn btn-primary"
+        >
+          Add Friend
+        </button>
 
-      <button
-        type="submit"
-        onClick={evt => {
-          evt.preventDefault();
-          constructNewFriend();
-        }}
-        className="btn btn-primary"
-      >
-        {editMode ? "Save Friend" : "I Can Has BFF"}
-      </button>
-    </form>
-  );
+        {foundFriendsArray.map(f => (
+          <friend key={f.id} friend={f} />
+        ))}
+      </form>
+    );
+  
 };
