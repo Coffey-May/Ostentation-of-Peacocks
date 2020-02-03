@@ -21,8 +21,6 @@ import ChatAddFriend from "./chats/ChatAddFriend";
 import EventList from "./events/EventList";
 import EventForm from "./events/EventForm";
 
-
-
 export default props => {
   return (
     <>
@@ -62,61 +60,58 @@ export default props => {
         />
       </EventProvider>
 
-
-      <ArticleProvider>
-        <Route
-          exact
-          path="/articles"
-          render={props => <ArticleList {...props} />}
-        />
-
-        <Route
-          exact
-          path="/articles/create"
-          render={props => <ArticleForm {...props} />}
-        />
-        <Route
-          path="/articles/editArticle/:articleId(\d+)"
-          render={props => <ArticleForm {...props} />}
-        />
-      </ArticleProvider>
-
-
+<ArticleProvider>
       <ChatProvider>
         <FriendProvider>
-        <UserProvider>
+          <UserProvider>
           <Route
             exact
-            path="/"
-            render={props => <ChatList {...props} />}
+            path="/articles"
+            render={props => <ArticleList {...props} />}
           />
-             <Route exact path="/chats" render={props => <ChatList {...props} />} /> 
+
           <Route
             exact
-            path="/chats/create"
-            render={props => <ChatForm {...props} />}
+            path="/articles/create"
+            render={props => <ArticleForm {...props} />}
           />
           <Route
-            path="/chats/edit/:chatId(\d+)"
-            render={props => <ChatForm {...props} />}
+            path="/articles/editArticle/:articleId(\d+)"
+            render={props => <ArticleForm {...props} />}
           />
-           <Route
-          exact
-          path="/friends"
-          render={props => <FriendList {...props} />}
-        />
-        <Route
-          path="/friends/create"
-          render={props => <FriendForm {...props} />}
-        />
-        <Route
-        exact path="/friends/:friendId(\d+)"
-        render={props => <ChatAddFriend {...props} />}
-        />
-        </UserProvider>
+            <Route exact path="/" render={props => <ChatList {...props} />} />
+            <Route
+              exact
+              path="/chats"
+              render={props => <ChatList {...props} />}
+            />
+            <Route
+              exact
+              path="/chats/create"
+              render={props => <ChatForm {...props} />}
+            />
+            <Route
+              path="/chats/edit/:chatId(\d+)"
+              render={props => <ChatForm {...props} />}
+            />
+            <Route
+              exact
+              path="/friends"
+              render={props => <FriendList {...props} />}
+            />
+            <Route
+              path="/friends/create"
+              render={props => <FriendForm {...props} />}
+            />
+            <Route
+              exact
+              path="/friends/:friendId(\d+)"
+              render={props => <ChatAddFriend {...props} />}
+            />
+          </UserProvider>
         </FriendProvider>
       </ChatProvider>
-
+      </ArticleProvider>
     </>
   );
 };

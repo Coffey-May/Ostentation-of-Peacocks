@@ -49,7 +49,7 @@ export default (props) => {
               }
                 return (
                     <Article props={props} key={singleArticles.id}
-                          Articles={singleArticles}
+                          article={singleArticles}
                           friendStatus={isFriend} />
                 )
             })
