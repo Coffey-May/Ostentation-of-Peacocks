@@ -9,10 +9,7 @@ export default props => {
   const editMode = props.match.params.hasOwnProperty("eventId");
 
   const handleControlledInputChange = changeEvent => {
-    /*
-            When changing a state object or array, always create a new one
-            and change state instead of modifying current one
-        */
+
     const newEvent = Object.assign({}, event);
     newEvent[changeEvent.target.name] = changeEvent.target.value;
     setEvent(newEvent);

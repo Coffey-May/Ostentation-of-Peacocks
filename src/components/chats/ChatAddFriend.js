@@ -9,6 +9,9 @@ export default (props) => {
     const friend = props.match.params.friendId
     const user = users.find(u => u.id === parseInt(friend) )|| {}
     
+    // const friendsOfActiveUser = friends.filter(f => f.initiatorId === parseInt(localStorage.getItem("nutshell_user"), 10))
+    // const chatOfMatchingFriend = friendsOfActiveUser.find(f => f.userId === chat.userId)
+    
     return (
         <section className="friend">
             <h3 className="friend__name">Would you like to add {user.userName}?</h3>
@@ -18,10 +21,11 @@ export default (props) => {
       "userId": 2,
       "initiatorId": null,
       "id": 2
-*/}
+*/} 
 
             <button onClick={
                 () => {
+                    
                     addFriend({
                         initiatorId:parseInt(localStorage.getItem("nutshell_user")),
                         userId: user.id

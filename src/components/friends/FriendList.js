@@ -4,7 +4,6 @@ import React, { useContext } from "react"
 
 import { FriendContext } from "./FriendProvider"
 
-
 import Friend from "./Friend"
 
 import "./Friend.css"
@@ -17,7 +16,6 @@ export default (props) => {
     const activeUser = localStorage.getItem("nutshell_user")
    
     console.log(activeUser)
-    // debugger
   
     return (
 
@@ -47,19 +45,6 @@ export default (props) => {
     )
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

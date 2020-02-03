@@ -6,7 +6,7 @@ import { UserProvider } from "./auth/UserProvider";
 import { ArticleProvider } from "./articles/ArticleProvider";
 import { FriendProvider } from "./friends/FriendProvider";
 import { ChatProvider } from "./chats/ChatProvider";
-import { EventProvider} from "./events/EventProvider";
+import { EventProvider } from "./events/EventProvider";
 import ChatList from "./chats/ChatList";
 import ChatForm from "./chats/ChatForm";
 import { TaskProvider } from "./tasks/TaskProvider";
@@ -51,7 +51,6 @@ export default props => {
           render={props => <EventList {...props} />}
         />
 
-        <Route exact path="/" render={props => <EventList {...props} />} />
         <Route
           exact
           path="/events/create"
@@ -71,7 +70,6 @@ export default props => {
           render={props => <ArticleList {...props} />}
         />
 
-        <Route exact path="/" render={props => <ArticleList {...props} />} />
         <Route
           exact
           path="/articles/create"
@@ -85,12 +83,14 @@ export default props => {
 
 
       <ChatProvider>
+        <FriendProvider>
         <UserProvider>
           <Route
             exact
-            path="/chats"
+            path="/"
             render={props => <ChatList {...props} />}
           />
+             <Route exact path="/chats" render={props => <ChatList {...props} />} /> 
           <Route
             exact
             path="/chats/create"
@@ -100,13 +100,7 @@ export default props => {
             path="/chats/edit/:chatId(\d+)"
             render={props => <ChatForm {...props} />}
           />
-        </UserProvider>
-      </ChatProvider>
-
-
-      <FriendProvider>
-        <UserProvider>
-        <Route
+           <Route
           exact
           path="/friends"
           render={props => <FriendList {...props} />}
@@ -120,7 +114,9 @@ export default props => {
         render={props => <ChatAddFriend {...props} />}
         />
         </UserProvider>
-      </FriendProvider>
+        </FriendProvider>
+      </ChatProvider>
+
     </>
   );
 };
