@@ -11,7 +11,6 @@ export default ({ event, history }) => {
       <div className="event_name">Event Details:{event.eventLocation}</div>
       <div className="event_name">Event Date:{ event.eventDate}</div>
       <div className={isActiveUser ? "act_user" : "event_user"}>User:{event.user.userName}</div>
-      {/* <div>Date: {event.userId}</div> */}
       <button className="btn--edit" onClick={() => {
         history.push(`/events/editEvents/${event.id}`)
       }}>edit</button>
