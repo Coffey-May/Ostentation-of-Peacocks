@@ -13,9 +13,9 @@ export const FriendProvider = (props) => {
     const [friends, setFriends] = useState([])
 
     const getFriends = () => {
-        return fetch("http://localhost:8088/friends?_expand=userId", 
+        return fetch("http://localhost:8088/friends?_expand=user") 
            
-        )
+        
             .then(res => res.json())
             .then(setFriends)
     }
