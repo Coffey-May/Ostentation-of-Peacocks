@@ -9,7 +9,7 @@ export default (props) => {
 
   return (
       <>
-          <h1>events</h1>
+          <h1 className="ev_header">EVENTS</h1>
 
           <button onClick={() => props.history.push("/events/create")}>
               Share Events
