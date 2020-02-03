@@ -32,8 +32,8 @@ export const TaskProvider = (props) => {
     }
 
 
-    const completeTask = task => {
-        return fetch(`http://localhost:8088/tasks/${task.id}`, {
+    const completeTask = (task, id) => {
+        return fetch(`http://localhost:8088/tasks/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
