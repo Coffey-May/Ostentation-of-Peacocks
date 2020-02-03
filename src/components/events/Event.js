@@ -6,20 +6,23 @@ export default ({ event, history }) => {
 
   return (
     <section className="EventCard">
-      <div>Title: {event.eventName} </div>
-      <div>Location: {event.eventLocation} </div>
+      <h3>Event Name: {event.eventName} </h3>
      
-      <div>Date: {event.dateTime}</div>
+      <div className="event_name">Event Details:{event.eventLocation}</div>
+      <div className="event_name">Event Date:{ event.eventDate}</div>
+      <div className="event_user">User:{event.user.userName}</div>
+      {/* <div>Date: {event.userId}</div> */}
       <button className="btn--edit" onClick={() => {
-        history.push(`/events/editEvent/${event.id}`)
+        history.push(`/events/editEvents/${event.id}`)
       }}>edit</button>
       <button className="btn--delete"
       onClick={() => {
-        // Code to delete animal from database
-        deleteEvent(event.id).then(() => {
+        deleteEvent(event).then(() => {
           history.push("/events");
         });
       }}>delete</button>
     </section>
   );
 };
+
+

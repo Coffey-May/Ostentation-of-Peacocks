@@ -5,13 +5,14 @@ import { EventContext } from "./EventProvider";
 
 export default (props) => {
   const { events } = useContext(EventContext)
+  
 
   return (
       <>
-          <h1>Events</h1>
+          <h1>events</h1>
 
-          <button onClick={() => props.history.push("/articles/create")}>
-              Share Stuff
+          <button onClick={() => props.history.push("/events/create")}>
+              Share Events
           </button>
           <div className="events">
 
