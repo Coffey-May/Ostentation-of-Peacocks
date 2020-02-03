@@ -16,6 +16,8 @@ import TaskList from "./tasks/TaskList";
 import ArticleForm from "./articles/ArticleForm";
 import FriendForm from "./friends/FriendForm";
 import TaskForm from "./tasks/TaskForm";
+import ChatAddFriend from "./chats/ChatAddFriend";
+
 
 export default props => {
   return (
@@ -77,6 +79,7 @@ export default props => {
       </ChatProvider>
 
       <FriendProvider>
+        <UserProvider>
         <Route
           exact
           path="/friends"
@@ -86,6 +89,11 @@ export default props => {
           path="/friends/create"
           render={props => <FriendForm {...props} />}
         />
+        <Route
+        exact path="/friends/:friendId(\d+)"
+        render={props => <ChatAddFriend {...props} />}
+        />
+        </UserProvider>
       </FriendProvider>
     </>
   );
