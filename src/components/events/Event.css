@@ -1,0 +1,21 @@
+.EventCard{
+    border:1px solid black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h3{
+   margin:0 auto ;
+}
+
+  .event_name{
+      font-weight: 900;
+  } 
+
+  .event_user{
+    font-style: italic;
+  }
+  
+  
